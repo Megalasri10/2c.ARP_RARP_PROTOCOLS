@@ -19,12 +19,19 @@ P
 ## PROGRAM - ARP
 
 CLIENT:
+
 import socket
+
 s=socket.socket()
+
 s.bind(('localhost',8000))
+
 s.listen(5)
+
 c,addr=s.accept()
+
 address={"165.165.80.80":"6A:08:AA:C2","165.165.79.1":"8A:BC:E3:FA"};
+
 while True:
   ip=c.recv(1024).decode()
   try:
@@ -35,8 +42,11 @@ while True:
 SERVER:
 
 import socket
+
 s=socket.socket()
+
 s.connect(('localhost',8000))
+
 while True:
   ip=input("Enter logical Address : ")
   s.send(ip.encode())
@@ -50,10 +60,15 @@ while True:
 CLIENT:
 
 import socket
+
 s=socket.socket()
+
 s.bind(('localhost',9000))
+
 s.listen(5) c,addr=s.accept()
+
 address={"6A:08:AA:C2":"192.168.1.100","8A:BC:E3:FA":"192.168.1.99"};
+
 while True: 
   ip=c.recv(1024).decode() 
   try:
@@ -64,7 +79,9 @@ while True:
 SERVER:
 
 import socket s=socket.socket()
+
 s.connect(('localhost',9000)) 
+
 while True:
   ip=input("Enter MAC Address : ")
   s.send(ip.encode())
